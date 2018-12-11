@@ -116,7 +116,6 @@ def main():
 
     try:
         while True:
-            #lumi['d']['accel'] = bh1750.luminance(BH1750.ONCE_HIRES_1)
             x, y, z, t, dx, dy, dz = mpu.read_sensors_scaled()
             accel['d']['acceleration_x'] = x
             accel['d']['acceleration_y'] = y
