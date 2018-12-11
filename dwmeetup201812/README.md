@@ -136,8 +136,8 @@ upip.install("micropython-umqtt.simple")
 
 | 항목 | 값 | 예시 |
 |---|---|---|
-| 자이로 | gyro | `iot-2/type/`badge2018`/id/`badge001`/evt/`gyro`/fmt/json` |
-| 조도센서 | lumi | |
+| 자이로 | accel | `iot-2/type/`badge2018`/id/`badge001`/evt/`accel`/fmt/json` |
+| 조도센서 | luminance | |
 | 버튼 | button | |
 
 
@@ -150,7 +150,7 @@ upip.install("micropython-umqtt.simple")
 | 항목 | 값 | 예시 |
 |---|---|---|
 | LED | led | `iot-2/type/`badge2018`/id/`badge001`/cmd/`led`/fmt/json` |
-| 배경색 | bg | |
+| 배경색 | color | |
 
 
 ### LED 제어 예제
