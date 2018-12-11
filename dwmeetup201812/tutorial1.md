@@ -175,6 +175,9 @@ ugfx.char(10, 10, ord('A'), 'IBMPlexMono_Bold48', ugfx.BLUE)
 ### ugfx.text(X, Y, STRING, COLOR)
 
 ### ugfx.string(X, Y, STRING, FONT_NAME, COLOR)
+```
+ugfx.string(50, 50, 'Hello World', 'IBMPlexMono_Bold36', ugfx.WHITE)
+```
 
 ### ugfx.string_box(X, Y, W, H, STRING, FONT, COLOR, JUSTIFY)
 
