@@ -896,26 +896,3 @@ def main():
 ``` json
 [{"id":"3bc317e9.054bf8","type":"comment","z":"64c93c11.da56f4","name":"Accelerometer Event V2","info":"","x":160,"y":1340,"wires":[]},{"id":"2263db9b.20bc04","type":"ibmiot in","z":"64c93c11.da56f4","authentication":"apiKey","apiKey":"a4331e4b.25022","inputType":"evt","logicalInterface":"","ruleId":"","deviceId":"240AC423BFF8","applicationId":"","deviceType":"badge2018","eventType":"accel","commandType":"","format":"json","name":"IBM IoT - accel","service":"registered","allDevices":true,"allApplications":"","allDeviceTypes":false,"allLogicalInterfaces":"","allEvents":false,"allCommands":"","allFormats":"","qos":0,"x":140,"y":1380,"wires":[["99064023.0e444"]]},{"id":"99064023.0e444","type":"change","z":"64c93c11.da56f4","name":"Acceleration","rules":[{"t":"set","p":"payload","pt":"msg","to":"payload.d","tot":"msg"}],"action":"","property":"","from":"","to":"","reg":false,"x":330,"y":1380,"wires":[["217f9bfb.ec5c24"]]},{"id":"daa2a33d.a79ef","type":"debug","z":"64c93c11.da56f4","name":"","active":false,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload.roll","x":720,"y":1380,"wires":[]},{"id":"c8774551.b35038","type":"change","z":"64c93c11.da56f4","name":"BLACK","rules":[{"t":"set","p":"payload","pt":"msg","to":"black","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":460,"y":1500,"wires":[["5fc6afb2.e41ab"]]},{"id":"ff6626f1.970df8","type":"ibmiot out","z":"64c93c11.da56f4","authentication":"apiKey","apiKey":"a4331e4b.25022","outputType":"cmd","deviceId":"240AC423BFF8","deviceType":"badge2018","eventCommandType":"color","format":"json","data":"default","qos":0,"name":"IBM IoT - color","service":"registered","x":740,"y":1560,"wires":[]},{"id":"5fc6afb2.e41ab","type":"change","z":"64c93c11.da56f4","name":"color payload","rules":[{"t":"set","p":"payload","pt":"msg","to":"{\"d\":{\"color\":payload}}","tot":"jsonata"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":1500,"wires":[["ff6626f1.970df8"]]},{"id":"df55dd06.c1ee4","type":"change","z":"64c93c11.da56f4","name":"RED","rules":[{"t":"set","p":"payload","pt":"msg","to":"red","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":450,"y":1540,"wires":[["5fc6afb2.e41ab"]]},{"id":"61d8ddca.c94404","type":"switch","z":"64c93c11.da56f4","name":"Pitch","property":"payload.pitch","propertyType":"msg","rules":[{"t":"btwn","v":"-10.0","vt":"num","v2":"10.0","v2t":"num"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":310,"y":1520,"wires":[["c8774551.b35038"],["df55dd06.c1ee4"]]},{"id":"217f9bfb.ec5c24","type":"function","z":"64c93c11.da56f4","name":"roll & pitch","func":"let X = msg.payload.acceleration_x\nlet Y = msg.payload.acceleration_y\nlet Z = msg.payload.acceleration_z\n\nmsg.payload.roll = Math.atan2(Y, Z) * 180/Math.PI;\nmsg.payload.pitch = Math.atan2(X, Math.sqrt(Y*Y + Z*Z)) * 180/Math.PI;\n\nreturn msg;","outputs":1,"noerr":0,"x":330,"y":1440,"wires":[["daa2a33d.a79ef","f34f48e9.4db618","61d8ddca.c94404"]]},{"id":"c7d8b911.c91578","type":"change","z":"64c93c11.da56f4","name":"ON","rules":[{"t":"set","p":"payload","pt":"msg","to":"on","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":450,"y":1640,"wires":[["a2ae3543.970d78"]]},{"id":"e5492fd4.0c91a","type":"ibmiot out","z":"64c93c11.da56f4","authentication":"apiKey","apiKey":"a4331e4b.25022","outputType":"cmd","deviceId":"240AC423BFF8","deviceType":"badge2018","eventCommandType":"led","format":"json","data":"default","qos":0,"name":"IBM IoT - led","service":"registered","x":730,"y":1700,"wires":[]},{"id":"a2ae3543.970d78","type":"change","z":"64c93c11.da56f4","name":"blue led payload","rules":[{"t":"set","p":"payload","pt":"msg","to":"{\"d\":{\"target\":\"blue\",\"action\":payload}}","tot":"jsonata"}],"action":"","property":"","from":"","to":"","reg":false,"x":660,"y":1640,"wires":[["e5492fd4.0c91a"]]},{"id":"cc0aba61.493bd8","type":"change","z":"64c93c11.da56f4","name":"OFF","rules":[{"t":"set","p":"payload","pt":"msg","to":"off","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":450,"y":1680,"wires":[["a2ae3543.970d78"]]},{"id":"f34f48e9.4db618","type":"function","z":"64c93c11.da56f4","name":"Roll","func":"let prop = Number(msg.payload.roll)\nif (prop < -10.0 || 10.0 < prop) return [msg, null]\nreturn [null, msg]","outputs":2,"noerr":0,"x":310,"y":1660,"wires":[["c7d8b911.c91578"],["cc0aba61.493bd8"]]},{"id":"a4331e4b.25022","type":"ibmiot","z":"","name":"ua3ev8","keepalive":"60","serverName":"ua3ev8.messaging.internetofthings.ibmcloud.com","cleansession":true,"appId":"","shared":false}]
 ``` 
-
-
-## 참고
-
-### Watson IoT Platform (2018-11-27 업데이트)
-
-> https://console.bluemix.net/docs/services/IoT/plans_overview.html
-
-* Lite
-* Watson IoT Platform Standard -> x
-* Watson IoT Platform Advanced Security -> x
-* Watson IoT Platform Connection and Analytics Service - Capacity 1 and Capacity 2
-
-for more detail : https://www.ibm.com/support/knowledgecenter/SSQP8H/iot/overview/overview.html
-
-### Visutalize Sample
-
-> https://github.com/ibm-watson-iot/rickshaw4iot/archive/master.zip
-
-* node.js
-* paho mqtt
-* d3
-* jquery
