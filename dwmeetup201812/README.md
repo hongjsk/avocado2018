@@ -675,10 +675,9 @@ prev_color = ""
 def color_cb(obj):
   global prev_color
 
-  val = getattr(ugfx, obj['d']['color'].upper())
-  if val:
-      color = val
-  else:
+  try:
+      color = getattr(ugfx, obj['d']['color'].upper())
+  except:
       try:
         color = int(obj['d']['color'])
       except:
