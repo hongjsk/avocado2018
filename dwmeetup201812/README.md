@@ -1,4 +1,4 @@
-# IBM developerWorks meetup 201812 행사 정보
+# IBM developerWorks meetup 2018.12.11
 
 ## IoT 뱃지 만져보기 (마이크로 파이썬 프로그래밍 GPIO & SPI (LCD, 버튼, LED))
 
@@ -8,6 +8,8 @@
 * IoT Badge 연결 터미널 S/W 설치
 * Network 연결
 * Web REPL download 및 연결
+* Web REPL로 연결 후 Python File 업로드
+* WEb REPL에서 `execfile` 명령으로 Python Code 실행
 
 ## 센서 연결하기 (I2C, PWM & ADC (피에조 부저, 조도 센서, 자이로 센서))
 
