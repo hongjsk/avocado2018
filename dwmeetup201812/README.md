@@ -9,7 +9,7 @@
 * Network 연결
 * Web REPL download 및 연결
 * Web REPL로 연결 후 Python File 업로드
-* WEb REPL에서 `execfile` 명령으로 Python Code 실행
+* Web REPL에서 `execfile` 명령으로 Python Code 실행
 
 ## 센서 연결하기 (I2C, PWM & ADC (피에조 부저, 조도 센서, 자이로 센서))
 
